@@ -1,0 +1,35 @@
+.appBar {
+  background-color: #fff;
+  border-bottom: 1px solid transparent;
+  border-color: rgba(0,0,0,0.14);
+  box-shadow: none !important;
+  color: rgba(0,0,0,0.54);
+  fill: rgba(0,0,0,0.54);
+}
+.appBar svg {
+  width: 5.4rem;
+  height: 6.4rem;
+  margin-right: 1rem;
+  fill: #fff;
+  cursor: pointer;
+}
+.appBar svg g{
+    fill: rgba(0,0,0,0.54);
+}
+.appBar p {
+  letter-spacing: 0px;
+  font-weight: 400;
+  font-size: 22px;
+  margin-left: 3vw;
+  font-family: 'Product Sans',Arial,Helvetica,sans-serif;
+}
+.appBar span:first-child {
+    font-weight: 900;
+    letter-spacing: 0px;
+    font-family: 'Raleway', sans-serif;
+}
+.appBar .rightIcon {
+  width: 5.4rem;
+  height: 6.4rem;
+  transform: scale(0.5);
+}
