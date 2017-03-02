@@ -32,4 +32,10 @@
   width: 5.4rem;
   height: 6.4rem;
   transform: scale(0.5);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.appBar .rightIcon:hover {
+
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }

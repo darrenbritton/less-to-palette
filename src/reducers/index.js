@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import WeatherReducer from './reducer-weather';
+import PaletteReducer from './reducer-palette';
 
 const rootReducer = combineReducers({
-  weather: WeatherReducer
+  palette: PaletteReducer
 });
 
 export default rootReducer;

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import AppBar from './AppBar';
 import Uploader from '../containers/uploader'
-// import SearchBar from '../containers/search-bar';
-// import WeatherList from '../containers/weather-list';
+import Palette from '../containers/palette'
 
 export default class App extends Component {
   render() {
@@ -12,6 +11,9 @@ export default class App extends Component {
         <section style={{ padding: 20 }}>
         </section>
         <Uploader />
+        <section style={{ padding: 20 }}>
+        </section>
+        <Palette />
       </div>
     );
   }

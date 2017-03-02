@@ -1,15 +1,21 @@
-import axios from 'axios';
+export const LESS_TO_PALETTE = 'LESS_TO_PALETTE';
+import {readAsText} from 'promise-file-reader'
 
-const API_KEY = '287abb69cc8fc0f96fd6baeebfffcede';
-const ROOT_URL = `https://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}`;
-
-export const FETCH_WEATHER = 'FETCH-WEATHER';
-
-export function fetchWeather(city) {
-  const url = `${ROOT_URL}&q=${city}`;
-  const request = axios.get(url);
-  return {
-    type: FETCH_WEATHER,
-    payload: request
-  };
+export function lessFileToPalette(file) {
+  const palette = readAsText(file).then((content) => {
+    const lines = content.split('\n');
+    const colours = [];
+    lines.forEach((line) => {
+      if (line.indexOf('@') > -1 && (line.indexOf(': #') > -1 || line.indexOf(': rgb') > -1)) {
+        const label = line.substring(0, line.indexOf(':'));
+        let value = line.substring(line.indexOf(':') + 2, line.indexOf(';'));
+        if(value.indexOf(',') === -1) {
+          colours.push({key: label, value});
+        }
+      }
+    })
+    return colours;
+  });
+  console.log(Promise.resolve(palette));
+  return {type: LESS_TO_PALETTE, payload: palette};
 }
