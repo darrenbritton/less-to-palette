@@ -4,8 +4,12 @@ machine:
 
 general:
   branches:
-    ignore:
-      - gh-pages
+    only:
+      - master
+
+dependencies:
+  pre:
+    - npm install -g webpack
 
 test:
   override:
@@ -15,6 +19,5 @@ deployment:
   staging:
     branch: master
     commands:
-      - npm install -g webpack
       - npm run build
-      - ./scripts/deploy-ghpages.sh build
+      - ./deploy-ghpages.sh .
