@@ -16,5 +16,5 @@ deployment:
     branch: master
     commands:
       - npm install -g webpack
-      - npm start build
+      - npm run build
       - ./scripts/deploy-ghpages.sh build
