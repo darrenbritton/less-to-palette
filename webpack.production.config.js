@@ -28,12 +28,7 @@ const settings = {
           ],
           plugins: [
             "transform-node-env-inline"
-          ],
-          env: {
-            development: {
-              plugins: ["react-hot-loader/babel"]
-            }
-          }
+          ]
         }
       },
       {
@@ -55,7 +50,6 @@ const settings = {
     ]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin('common.js'),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.AggressiveMergingPlugin()

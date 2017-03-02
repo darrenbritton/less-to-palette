@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node_modules/.bin/cross-env NODE_ENV=development node_modules/.bin/webpack-dev-server --colors --config webpack.config.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "build": "NODE_ENV=production webpack -p --config ./webpack.production.config.js"
   },
   "author": "Darren Britton",
   "license": "ISC",
@@ -20,6 +21,7 @@
     "babel-preset-es2015-loose": "^8.0.0",
     "babel-preset-react": "^6.1.18",
     "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-stage-0": "^6.22.0",
     "babel-preset-stage-2": "^6.18.0",
     "babel-runtime": "^6.23.0",
     "caniuse-db": "^1.0.30000631",
@@ -54,6 +56,7 @@
     "postcss-cssnext": "^2.9.0",
     "promise-file-reader": "^0.3.1",
     "react": "^0.14.3",
+    "react-css-modules": "^4.1.0",
     "react-dom": "^0.14.3",
     "react-dropzone": "^3.11.0",
     "react-flexbox-grid": "^0.10.2",
