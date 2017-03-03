@@ -10,7 +10,7 @@ const view = (props) => {
   return (
     <Card styleName='card'>
       <CardMedia aspectRatio="wide" style={{backgroundColor: props.colour}}  />
-      <CardTitle title={props.label} subtitle={props.colour}/>
+      <CardTitle title={props.label} subtitle={props.colour} styleName='card-title'/>
       <CardActions>
         <Button label="Details"/>
         <Button label="Copy"/>
