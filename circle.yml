@@ -7,10 +7,6 @@ general:
     only:
       - master
 
-dependencies:
-  pre:
-    - npm install -g webpack
-
 test:
   override:
     - exit 0
