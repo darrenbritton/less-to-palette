@@ -1,6 +1,7 @@
 export const LESS_TO_PALETTE = 'LESS_TO_PALETTE';
 export const UPDATE_LOADING = 'UPDATE_LOADING';
 export const COLOUR_DETAIL = 'COLOUR_DETAIL';
+export const TOAST = 'TOAST';
 
 import {readAsText} from 'promise-file-reader'
 import tinycolor from 'tinycolor2';
@@ -31,14 +32,19 @@ export function updateColourDetail(colour) {
   return {type:COLOUR_DETAIL, payload: colour};
 }
 
+export function updateToast(toast) {
+  return {type: TOAST, payload: toast};
+}
+
 function processFileContent(content){
   const lines = content.split('\n');
   const colours = [];
   lines.forEach((line) => {
-    if (line.indexOf('@') > -1 && (line.indexOf(': #') > -1 || line.indexOf(': rgb') > -1)) {
+    if ((line.indexOf('@') > -1 || line.indexOf('$') > -1 || line.indexOf('--') > -1) && (line.indexOf(': #') > -1 || line.indexOf(': rgb') > -1)) {
       const label = line.substring(0, line.indexOf(':'));
-      let value = line.substring(line.indexOf(':') + 2, line.indexOf(';'));
-      if (value.indexOf(',') === -1) {
+      let value = line.substring(line.indexOf(':') + 2);
+      value = value.replace(';','');
+      if (value.indexOf('rgb') > -1 || value.indexOf(',') === -1) {
         const baseColourObj = {
           name: label,
           colour: value,

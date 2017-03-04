@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import AppBar from './AppBar';
-import Uploader from '../containers/uploader'
-import Palette from '../containers/palette'
+import Uploader from '../containers/uploader';
+import Palette from '../containers/palette';
+import Toast from '../containers/toast';
 
 export default class App extends Component {
   render() {
@@ -14,6 +15,7 @@ export default class App extends Component {
         <section style={{ padding: 20 }}>
         </section>
         <Palette />
+        <Toast />
       </div>
     );
   }
