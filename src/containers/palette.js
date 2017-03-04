@@ -68,14 +68,14 @@ class Palette extends Component {
       })
 
       sort = <Row>
-        <Col sm={12} md={3} lg={2}>
+        <Col xs={12} md={3} lg={2}>
           <Dropdown label='Sort By' onChange={this.handleChange} source={colourProperties} value={this.state.sortBy}/>
         </Col>
       </Row>;
 
       tiles = this.state.palette.map(function(colour) {
         return (
-          <Col key={colour.name} xs={3} md={2}>
+          <Col key={colour.name} xs={6} sm={3} md={2}>
             <ColourTile colour={colour.colour} label={colour.name} full={colour} />
           </Col>
         );

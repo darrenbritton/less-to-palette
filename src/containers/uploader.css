@@ -1,8 +1,7 @@
 .uploader {
   background: #fff;
-  max-width: 720px;
+  max-width: 50vw;
   height: 35vh;
-  line-height: 35vh;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -15,4 +14,9 @@
 
 .uploader:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.uploader > span {
+  display: block;
+  padding-top: 17.5vh;
 }
