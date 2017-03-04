@@ -17,7 +17,7 @@ const newTabRepo = () => {
 }
 
 const PurpleAppBar = () => (
-  <AppBar theme={theme} rightIcon={<GithubIcon />} onRightIconClick={newTabRepo}>
+  <AppBar scrollHide={true} theme={theme} rightIcon={<GithubIcon />} onRightIconClick={newTabRepo}>
     <p><span>&#123;less&#125;</span> <span>Palette</span></p>
   </AppBar>
 );

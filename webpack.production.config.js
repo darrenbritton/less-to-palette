@@ -20,14 +20,12 @@ const settings = {
       {
         test: /\.js?$/,
         loader: 'babel-loader',
+        exclude: /node_modules/,
         options: {
           presets: [
             ["es2015", { modules: false }],
             "stage-2",
             "react"
-          ],
-          plugins: [
-            "transform-node-env-inline"
           ]
         }
       },
@@ -52,10 +50,9 @@ const settings = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('production')
+        NODE_ENV: '"production"'
       }
     }),
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.AggressiveMergingPlugin()
   ],

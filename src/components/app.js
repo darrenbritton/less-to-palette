@@ -8,7 +8,7 @@ export default class App extends Component {
     return (
       <div>
         <AppBar />
-        <section style={{ padding: 20 }}>
+        <section style={{ padding: 53 }}>
         </section>
         <Uploader />
         <section style={{ padding: 20 }}>

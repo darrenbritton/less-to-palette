@@ -42,7 +42,7 @@ class Uploader extends Component {
     }
     return (
         <div>
-          <Dropzone lessFileToPalette={this.props.lessFileToPalette} styleName="uploader" onDrop={this.onDrop}>
+          <Dropzone styleName="uploader" onDrop={this.onDrop}>
             <span>{ uploaderContent }</span>
           </Dropzone>
         </div>
