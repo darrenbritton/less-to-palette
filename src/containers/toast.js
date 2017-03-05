@@ -1,11 +1,10 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import { Snackbar } from 'react-toolbox/lib/snackbar';
 
 class Toast extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       active: false,
@@ -14,41 +13,44 @@ class Toast extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-      this.setState(nextProps.toast);
+    this.setState(nextProps.toast);
   }
 
-  handleSnackbarClick = (event, instance) => {
-     console.log('handleSnackbarClick', event, instance);
-     this.setState({ active: false });
-   };
+  handleSnackbarClick() {
+    this.setState({ active: false });
+  }
 
-   handleSnackbarTimeout = (event, instance) => {
-     this.setState({ active: false });
-   };
+  handleSnackbarTimeout() {
+    this.setState({ active: false });
+  }
 
-   handleClick = () => {
-     this.setState({ active: true });
-   };
+  handleClick() {
+    this.setState({ active: true });
+  }
 
-   render () {
-     return (
-       <section>
-         <Snackbar
-           action='Dismiss'
-           active={this.state.active}
-           label={this.state.message}
-           timeout={2000}
-           onClick={this.handleSnackbarClick}
-           onTimeout={this.handleSnackbarTimeout}
-           type='cancel'
-         />
-       </section>
-     );
-   }
+  render() {
+    return (
+      <section>
+        <Snackbar
+          action="Dismiss"
+          active={this.state.active}
+          label={this.state.message}
+          timeout={2000}
+          onClick={this.handleSnackbarClick}
+          onTimeout={this.handleSnackbarTimeout}
+          type="cancel"
+        />
+      </section>
+    );
+  }
  }
 
- function mapStateToProps({toast}) {
-   return {toast};
- }
+Toast.propTypes = {
+  toast: React.PropTypes.Object.isRequired
+};
 
- export default connect(mapStateToProps)(Toast);
+function mapStateToProps({ toast }) {
+  return { toast };
+}
+
+export default connect(mapStateToProps)(Toast);

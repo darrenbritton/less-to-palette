@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import CSSModules from 'react-css-modules';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import css from 'react-css-modules';
 import queryString from 'query-string';
 
 import ProgressBar from 'react-toolbox/lib/progress_bar';
@@ -9,7 +9,7 @@ import ProgressBar from 'react-toolbox/lib/progress_bar';
 import Dropzone from 'react-dropzone';
 import styles from './uploader.css';
 
-import {lessFileToPalette, fileUrlToPalette, updateLoadingState, updateToast} from '../actions/index';
+import { lessFileToPalette, fileUrlToPalette, updateLoadingState, updateToast } from '../actions/index';
 
 class Uploader extends Component {
   constructor(props) {
@@ -26,12 +26,6 @@ class Uploader extends Component {
     }
   }
 
-  checkResult(payload) {
-    if (payload.length === 0) {
-      this.props.updateToast({active: true, message: 'No colour variables found in this file'});
-    }
-  }
-
   onDrop(files) {
     this.props.updateLoadingState(true);
     let fileLabels = '';
@@ -42,18 +36,24 @@ class Uploader extends Component {
       if (file.name.match(/\.*\.less|.*\.sass|.*\.css/gi)) {
         fileLabels += file.name;
       } else {
-        this.props.updateToast({active: true, message: `Cannot process file ${file.name}`});
+        this.props.updateToast({ active: true, message: `Cannot process file ${file.name}` });
       }
     });
     if (fileLabels) {
-      this.setState({text: fileLabels});
+      this.setState({ text: fileLabels });
+    }
+  }
+
+  checkResult(payload) {
+    if (payload.length === 0) {
+      this.props.updateToast({ active: true, message: 'No colour variables found in this file' });
     }
   }
 
   render() {
     let uploaderContent = this.state.text;
     if (this.props.loading) {
-      uploaderContent = <ProgressBar type="linear" mode="indeterminate"/>
+      uploaderContent = <ProgressBar type="linear" mode="indeterminate" />;
     }
     return (
       <div>
@@ -63,8 +63,15 @@ class Uploader extends Component {
       </div>
     );
   }
-
 }
+
+Uploader.propTypes = {
+  loading: React.PropTypes.Boolean.isRequired,
+  updateToast: React.PropTypes.function.isRequired,
+  updateLoadingState: React.PropTypes.function.isRequired,
+  lessFileToPalette: React.PropTypes.function.isRequired,
+  fileUrlToPalette: React.PropTypes.function.isRequired
+};
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
@@ -75,8 +82,8 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-function mapStateToProps({loading}) {
-  return {loading};
+function mapStateToProps({ loading }) {
+  return { loading };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CSSModules(Uploader, styles));
+export default connect(mapStateToProps, mapDispatchToProps)(css(Uploader, styles));

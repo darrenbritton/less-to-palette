@@ -13,7 +13,7 @@ const settings = {
     path: __dirname
   },
   resolve: {
-    extensions: [ '.js', '.jsx', '.json', '.css']
+    extensions: ['.js', '.css']
   },
   module: {
     rules: [

@@ -1,33 +1,37 @@
 import React from 'react';
-import CSSModules from 'react-css-modules';
 
 import { CardMedia } from 'react-toolbox/lib/card';
-import { List, ListItem, ListSubHeader, ListDivider, ListCheckbox } from 'react-toolbox/lib/list';
-import { Button } from 'react-toolbox/lib/button';
-import FontIcon from 'react-toolbox/lib/font_icon';
-import CopyToClipboard from 'react-copy-to-clipboard';
+import { List, ListItem, ListSubHeader } from 'react-toolbox/lib/list';
+
+import css from 'react-css-modules';
 import styles from './colour-detail-view.css';
 
-const view = (props) => {
-  const colourProperties = Object.keys(props.colour).map(function(property) {
-    return (
-      <ListItem
-        key={property}
-        caption={props.colour[property].toString()}
-        legend={property}
-      />
-    );
-  });
+const View = (props) => {
+  const colourProperties = Object.keys(props.colour).map(property => (
+    <ListItem
+      key={property}
+      caption={props.colour[property].toString()}
+      legend={property}
+    />
+    ));
 
   return (
     <div>
-      <CardMedia aspectRatio="wide" style={{backgroundColor: props.colour.colour}} styleName='colour-swatch'  />
+      <CardMedia
+        aspectRatio="wide"
+        style={{ backgroundColor: props.colour.colour }}
+        styleName="colour-swatch"
+      />
       <List>
-         <ListSubHeader caption='Colour Properties' />
-         {colourProperties}
-     </List>
-   </div>
+        <ListSubHeader caption="Colour Properties" />
+        {colourProperties}
+      </List>
+    </div>
   );
-}
+};
 
-export default CSSModules(view, styles);
+View.propTypes = {
+  colour: React.PropTypes.Object.isRequired,
+};
+
+export default css(View, styles);

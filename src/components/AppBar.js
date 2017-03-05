@@ -1,8 +1,6 @@
-import React, { PropTypes } from 'react';
+/* eslint max-len: 0*/
+import React from 'react';
 import AppBar from 'react-toolbox/lib/app_bar';
-import Navigation from 'react-toolbox/lib/navigation';
-import Link from 'react-toolbox/lib/link';
-import Logo from './Logo.js';
 import theme from './AppBar.css';
 
 const repoUrl = 'https://github.com/ThatCrazyIrishGuy/less-to-palette';
@@ -14,10 +12,10 @@ const GithubIcon = () => (
 
 const newTabRepo = () => {
   window.open(repoUrl, '_blank');
-}
+};
 
 const PurpleAppBar = () => (
-  <AppBar scrollHide={true} theme={theme} rightIcon={<GithubIcon />} onRightIconClick={newTabRepo}>
+  <AppBar scrollHide theme={theme} rightIcon={<GithubIcon />} onRightIconClick={newTabRepo}>
     <p><span>&#123;less&#125;</span> <span>Palette</span></p>
   </AppBar>
 );

@@ -3,19 +3,19 @@ const webpack = require('webpack');
 const settings = {
   entry: {
     bundle: [
-      "react-hot-loader/patch",
-      "./src/index.js"
+      'react-hot-loader/patch',
+      './src/index.js'
     ]
   },
   output: {
-    filename: "bundle.js",
-    publicPath: "/",
+    filename: 'bundle.js',
+    publicPath: '/',
     path: __dirname
   },
   resolve: {
-    extensions: [ '.js', '.jsx', '.json', '.css']
+    extensions: ['.js', '.css']
   },
-  devtool: "eval-source-map",
+  devtool: 'eval-source-map',
   module: {
     rules: [
       {
@@ -24,16 +24,16 @@ const settings = {
         exclude: /node_modules/,
         options: {
           presets: [
-            ["es2015", { modules: false }],
-            "stage-2",
-            "react"
+            ['es2015', { modules: false }],
+            'stage-2',
+            'react'
           ],
           plugins: [
-            "transform-node-env-inline"
+            'transform-node-env-inline'
           ],
           env: {
             development: {
-              plugins: ["react-hot-loader/babel"]
+              plugins: ['react-hot-loader/babel']
             }
           }
         }
@@ -41,24 +41,24 @@ const settings = {
       {
         test: /\.css$/,
         use: [
-          "style-loader",
+          'style-loader',
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               modules: true,
               sourceMap: true,
               importLoaders: 1,
-              localIdentName: "[name]--[local]--[hash:base64:8]"
+              localIdentName: '[name]--[local]--[hash:base64:8]'
             }
           },
-          "postcss-loader" // has separate config, see postcss.config.js nearby
+          'postcss-loader' // has separate config, see postcss.config.js nearby
         ]
       },
     ]
   },
   devServer: {
     contentBase: './',
-    publicPath: "http://localhost:8080/", // full URL is necessary for Hot Module Replacement if additional path will be added.
+    publicPath: 'http://localhost:8080/', // full URL is necessary for Hot Module Replacement if additional path will be added.
     quiet: false,
     hot: true,
     historyApiFallback: true,
