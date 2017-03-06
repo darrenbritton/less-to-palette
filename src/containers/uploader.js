@@ -18,6 +18,7 @@ class Uploader extends Component {
       text: 'Try dropping one or many .less, .sass, or .css files here, or click here to select files to upload.'
     };
     this.onDrop = this.onDrop.bind(this);
+    this.checkResult = this.checkResult.bind(this);
     const param = queryString.parse(location.search);
     if (param.file) {
       this.props.fileUrlToPalette(param.file).then((o) => {

@@ -12,6 +12,11 @@ import styles from './colour-tile.css';
 import { updateColourDetail } from '../actions/index';
 
 class Palette extends Component {
+  constructor(props) {
+    super(props);
+    this.updateColourDetail = this.updateColourDetail.bind(this);
+  }
+
   updateColourDetail() {
     this.props.updateColourDetail(this.props.full);
   }

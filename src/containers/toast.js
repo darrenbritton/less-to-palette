@@ -10,6 +10,8 @@ class Toast extends Component {
       active: false,
       message: ''
     };
+    this.handleSnackbarClick = this.handleSnackbarClick.bind(this);
+    this.handleSnackbarTimeout = this.handleSnackbarTimeout.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -24,9 +26,6 @@ class Toast extends Component {
     this.setState({ active: false });
   }
 
-  handleClick() {
-    this.setState({ active: true });
-  }
 
   render() {
     return (

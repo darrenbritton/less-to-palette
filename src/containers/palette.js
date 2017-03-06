@@ -20,6 +20,7 @@ class Palette extends Component {
   constructor(props) {
     super(props);
     this.toggleSidebar = this.toggleSidebar.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.state = {
       sidebarPinned: false,
       sortBy: '',
