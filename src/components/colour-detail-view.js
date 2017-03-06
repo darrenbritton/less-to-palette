@@ -31,7 +31,7 @@ const View = (props) => {
 };
 
 View.propTypes = {
-  colour: React.PropTypes.Object.isRequired,
+  colour: React.PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
 export default css(View, styles);

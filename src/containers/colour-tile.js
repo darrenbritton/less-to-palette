@@ -33,9 +33,9 @@ class Palette extends Component {
 }
 
 Palette.propTypes = {
-  updateColourDetail: React.PropTypes.function.isRequired,
-  colour: React.PropTypes.Object.isRequired,
-  full: React.PropTypes.Object.isRequired,
+  updateColourDetail: React.PropTypes.func.isRequired,
+  colour: React.PropTypes.string.isRequired, // eslint-disable-line react/forbid-prop-types
+  full: React.PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   label: React.PropTypes.string.isRequired
 };
 

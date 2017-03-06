@@ -46,7 +46,7 @@ class Toast extends Component {
  }
 
 Toast.propTypes = {
-  toast: React.PropTypes.Object.isRequired
+  toast: React.PropTypes.object.isRequired // eslint-disable-line react/forbid-prop-types
 };
 
 function mapStateToProps({ toast }) {

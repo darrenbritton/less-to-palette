@@ -66,11 +66,11 @@ class Uploader extends Component {
 }
 
 Uploader.propTypes = {
-  loading: React.PropTypes.Boolean.isRequired,
-  updateToast: React.PropTypes.function.isRequired,
-  updateLoadingState: React.PropTypes.function.isRequired,
-  lessFileToPalette: React.PropTypes.function.isRequired,
-  fileUrlToPalette: React.PropTypes.function.isRequired
+  loading: React.PropTypes.bool.isRequired,
+  updateToast: React.PropTypes.func.isRequired,
+  updateLoadingState: React.PropTypes.func.isRequired,
+  lessFileToPalette: React.PropTypes.func.isRequired,
+  fileUrlToPalette: React.PropTypes.func.isRequired
 };
 
 function mapDispatchToProps(dispatch) {

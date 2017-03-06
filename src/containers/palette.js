@@ -8,6 +8,9 @@ import { IconButton } from 'react-toolbox/lib/button';
 import { Dropdown } from 'react-toolbox/lib/dropdown';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
+import css from 'react-css-modules';
+import styles from './palette.css';
+
 import ColourTile from './colour-tile';
 import ColourDetailView from '../components/colour-detail-view';
 
@@ -65,7 +68,7 @@ class Palette extends Component {
 
       sort = (
         <Row>
-          <Col xsOffset={1} xs={10} md={3} lg={2}>
+          <Col xsOffset={1} xs={10} md={3} lg={2} styleName="dropdown">
             <Dropdown
               label="Sort By"
               onChange={this.handleChange}
@@ -103,9 +106,9 @@ class Palette extends Component {
 }
 
 Palette.propTypes = {
-  colourDetail: React.PropTypes.Object.isRequired,
-  palette: React.PropTypes.Object.isRequired,
-  updateLoadingState: React.PropTypes.function.isRequired
+  colourDetail: React.PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  palette: React.PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
+  updateLoadingState: React.PropTypes.func.isRequired
 };
 
 function mapDispatchToProps(dispatch) {
@@ -118,4 +121,4 @@ function mapStateToProps({ palette, colourDetail }) {
   return { palette, colourDetail };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Palette);
+export default connect(mapStateToProps, mapDispatchToProps)(css(Palette, styles));
