@@ -3,13 +3,13 @@ const webpack = require('webpack');
 const settings = {
   entry: {
     bundle: [
-      "react-hot-loader/patch",
-      "./src/index.js"
+      'react-hot-loader/patch',
+      './src/index.js'
     ]
   },
   output: {
-    filename: "bundle.js",
-    publicPath: "/",
+    filename: 'bundle.js',
+    publicPath: '/',
     path: __dirname
   },
   resolve: {
@@ -20,29 +20,29 @@ const settings = {
       {
         test: /\.js?$/,
         loader: 'babel-loader',
-        exclude: /node_modules/,
+        exclude: /node_modules|tests/,
         options: {
           presets: [
-            ["es2015", { modules: false }],
-            "stage-2",
-            "react"
+            ['es2015', { modules: false }],
+            'stage-2',
+            'react'
           ]
         }
       },
       {
         test: /\.css$/,
         use: [
-          "style-loader",
+          'style-loader',
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               modules: true,
               sourceMap: true,
               importLoaders: 1,
-              localIdentName: "[name]--[local]--[hash:base64:8]"
+              localIdentName: '[name]--[local]--[hash:base64:8]'
             }
           },
-          "postcss-loader" // has separate config, see postcss.config.js nearby
+          'postcss-loader' // has separate config, see postcss.config.js nearby
         ]
       },
     ]
@@ -56,6 +56,11 @@ const settings = {
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.AggressiveMergingPlugin()
   ],
+  externals: {
+    'react/addons': true,
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true
+  }
 };
 
 module.exports = settings;

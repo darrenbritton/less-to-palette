@@ -21,7 +21,7 @@ const settings = {
       {
         test: /\.js?$/,
         loader: 'babel-loader',
-        exclude: /node_modules/,
+        exclude: /node_modules|tests/,
         options: {
           presets: [
             ['es2015', { modules: false }],
@@ -71,6 +71,11 @@ const settings = {
       debug: true
     }),
   ],
+  externals: {
+    'react/addons': true,
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true
+  },
 };
 
 module.exports = settings;

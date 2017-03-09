@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { Card, CardMedia, CardTitle, CardActions } from 'react-toolbox/lib/card';
+import { IconMenu, MenuItem } from 'react-toolbox/lib/menu';
 import { Button } from 'react-toolbox/lib/button';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
@@ -26,11 +27,20 @@ class Palette extends Component {
       <Card styleName="card">
         <CardMedia aspectRatio="wide" style={{ backgroundColor: this.props.colour }} />
         <CardTitle title={this.props.label} subtitle={this.props.colour} styleName="card-title" />
-        <CardActions>
+        <CardActions styleName="card-actions">
           <Button label="Details" onClick={() => { this.updateColourDetail(); }} />
-          <CopyToClipboard text={this.props.colour}>
-            <Button label="Copy" />
-          </CopyToClipboard>
+          <IconMenu icon="more_vert" position="bottomRight" menuRipple>
+            <MenuItem styleName="menu-item-wrapper">
+              <CopyToClipboard text={this.props.label}>
+                <MenuItem value="copy-variable" icon="code" caption="Copy Variable" />
+              </CopyToClipboard>
+            </MenuItem>
+            <div styleName="menu-item-wrapper">
+              <CopyToClipboard text={this.props.colour}>
+                <MenuItem value="copy-value" icon="color_lens" caption="Copy Value" />
+              </CopyToClipboard>
+            </div>
+          </IconMenu>
         </CardActions>
       </Card>
     );

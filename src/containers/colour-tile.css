@@ -16,3 +16,12 @@
    -webkit-line-clamp: 2;
    -webkit-box-orient: vertical;
  }
+
+ .card-actions {
+   justify-content: space-between;
+ }
+
+.menu-item-wrapper {
+  padding: 0px;
+  margin: 0px;
+}
