@@ -40,6 +40,7 @@ fi
 # copy over or recompile the new site
 cp ../index.html .
 cp ../bundle.js .
+cp ../CNAME .
 
 # stage any changes and new files
 git add -A
