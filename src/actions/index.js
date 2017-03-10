@@ -60,7 +60,10 @@ function processFileContent(content) {
   lines.forEach((line) => {
     if ((line.indexOf('@') > -1 || line.indexOf('$') > -1 || line.indexOf('--') > -1) && (line.indexOf(': #') > -1 || line.indexOf(': rgb') > -1)) {
       const label = line.substring(0, line.indexOf(':'));
-      let value = line.substring(line.indexOf(':') + 2);
+      let value = line.substring(line.indexOf(':') + 2).trim();
+      if (value.indexOf('/') > 0) {
+        value = value.substring(0, value.indexOf(' '));
+      }
       value = value.replace(';', '');
       if (value.indexOf('rgb') > -1 || value.indexOf(',') === -1) {
         const baseColourObj = {
