@@ -56,23 +56,21 @@ function constructColor(Obj) {
 
 function processFileContent(content) {
   const lines = content.split('\n');
+  const re = /(^(@|\$|--))(.+)(#(?:[0-9a-f]{3}){1,2}|rgb\((\d{1,3}), (\d{1,3}), (\d{1,3})\))(.+)(;)/i;
   const colours = [];
   lines.forEach((line) => {
-    if ((line.indexOf('@') > -1 || line.indexOf('$') > -1 || line.indexOf('--') > -1) && (line.indexOf(': #') > -1 || line.indexOf(': rgb') > -1)) {
-      const label = line.substring(0, line.indexOf(':'));
-      let value = line.substring(line.indexOf(':') + 2).trim();
-      if (value.indexOf('/') > 0) {
-        value = value.substring(0, value.indexOf(' '));
-      }
+    let result = re.exec(line);
+    if (result) {
+      result = result[0];
+      const label = result.substring(0, result.indexOf(':'));
+      let value = result.substring(result.indexOf(':') + 2);
       value = value.replace(';', '');
-      if (value.indexOf('rgb') > -1 || value.indexOf(',') === -1) {
-        const baseColourObj = {
-          name: label,
-          colour: value,
-          hex: tinycolor(value).toHexString()
-        };
-        colours.push(constructColor(baseColourObj));
-      }
+      const baseColourObj = {
+        name: label,
+        colour: value,
+        hex: tinycolor(value).toHexString()
+      };
+      colours.push(constructColor(baseColourObj));
     }
   });
   return colours;
