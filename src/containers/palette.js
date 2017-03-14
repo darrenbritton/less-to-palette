@@ -24,19 +24,15 @@ class Palette extends Component {
     this.state = {
       sidebarPinned: false,
       sortBy: '',
-      palette: [],
-      originalPalette: []
+      palette: []
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.palette.length > 0 && this.state.originalPalette !== nextProps.palette) {
-      if (this.state.originalPalette.length < 1) {
-        this.setState({ originalPalette: nextProps.palette });
-      }
+    if (nextProps.palette.length > 0 && this.props.originalPalette !== nextProps.palette) {
       this.setState({ palette: nextProps.palette });
     }
-    if (this.props.colourDetail !== nextProps.colourDetail) {
+    if (nextProps.colourDetail.name) {
       this.setState({ sidebarPinned: true });
     }
   }
@@ -109,6 +105,7 @@ class Palette extends Component {
 Palette.propTypes = {
   colourDetail: React.PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   palette: React.PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
+  originalPalette: React.PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
   updateLoadingState: React.PropTypes.func.isRequired
 };
 
@@ -118,8 +115,8 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-function mapStateToProps({ palette, colourDetail }) {
-  return { palette, colourDetail };
+function mapStateToProps({ palette, originalPalette, colourDetail }) {
+  return { palette, originalPalette, colourDetail };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(css(Palette, styles));

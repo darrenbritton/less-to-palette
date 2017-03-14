@@ -19,7 +19,7 @@ const View = (props) => {
     <div>
       <CardMedia
         aspectRatio="wide"
-        style={{ backgroundColor: props.colour.colour }}
+        style={{ background: props.colour.colour }}
         styleName="colour-swatch"
       />
       <List>

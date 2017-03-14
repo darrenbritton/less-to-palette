@@ -7,6 +7,7 @@ import ToastReducer from './reducer-toast';
 
 const rootReducer = combineReducers({
   palette: PaletteReducer,
+  originalPalette: PaletteReducer,
   loading: LoadingReducer,
   colourDetail: ColourDetailReducer,
   toast: ToastReducer

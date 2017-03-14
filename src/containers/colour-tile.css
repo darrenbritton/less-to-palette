@@ -18,6 +18,17 @@
    -webkit-box-orient: vertical;
  }
 
+ .card-title p {
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   width: 100%
+ }
+
+ .card-title > div {
+   max-width: 100%;
+ }
+
  .card-actions {
    justify-content: space-between;
  }

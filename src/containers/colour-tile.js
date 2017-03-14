@@ -25,7 +25,7 @@ class Palette extends Component {
   render() {
     return (
       <Card styleName="card">
-        <CardMedia aspectRatio="wide" style={{ backgroundColor: this.props.colour }} />
+        <CardMedia aspectRatio="wide" style={{ background: this.props.colour }} />
         <CardTitle title={this.props.label} subtitle={this.props.colour} styleName="card-title" />
         <CardActions styleName="card-actions">
           <Button label="Details" onClick={() => { this.updateColourDetail(); }} />
