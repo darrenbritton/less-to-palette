@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import { Card, CardMedia, CardTitle, CardActions } from 'react-toolbox/lib/card';
 import { IconMenu, MenuItem } from 'react-toolbox/lib/menu';
@@ -10,7 +8,6 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 import css from 'react-css-modules';
 import styles from './colour-tile.css';
 
-import { updateColourDetail } from '../actions/index';
 
 class Palette extends Component {
   constructor(props) {
@@ -54,7 +51,5 @@ Palette.propTypes = {
   label: React.PropTypes.string.isRequired
 };
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ updateColourDetail }, dispatch);
-}
-export default connect(null, mapDispatchToProps)(css(Palette, styles));
+
+export default css(Palette, styles);

@@ -21,19 +21,18 @@ class Palette extends Component {
     super(props);
     this.toggleSidebar = this.toggleSidebar.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.updateColourDetail = this.updateColourDetail.bind(this);
     this.state = {
       sidebarPinned: false,
       sortBy: '',
+      colourDetail: null,
       palette: []
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.palette.length > 0 && this.props.originalPalette !== nextProps.palette) {
-      this.setState({ palette: nextProps.palette });
-    }
-    if (nextProps.colourDetail.name) {
-      this.setState({ sidebarPinned: true });
+      this.setState({ palette: nextProps.palette, sortBy: '' });
     }
   }
 
@@ -43,9 +42,16 @@ class Palette extends Component {
     }
   }
 
+  updateColourDetail(colour) {
+    this.setState({
+      colourDetail: colour,
+      sidebarPinned: true
+    });
+  }
+
   toggleSidebar() {
     this.setState({
-      sidebarPinned: !this.state.sidebarPinned
+      sidebarPinned: !this.state.sidebarPinned,
     });
   }
 
@@ -78,12 +84,17 @@ class Palette extends Component {
 
       tiles = this.state.palette.map(colour => (
         <Col key={colour.name} xs={5} sm={3} md={2}>
-          <ColourTile colour={colour.colour} label={colour.name} full={colour} />
+          <ColourTile
+            colour={colour.colour}
+            label={colour.name}
+            full={colour}
+            updateColourDetail={this.updateColourDetail}
+          />
         </Col>
       ));
     }
-    if (this.props.colourDetail) {
-      detailView = <ColourDetailView colour={this.props.colourDetail} />;
+    if (this.state.colourDetail) {
+      detailView = <ColourDetailView colour={this.state.colourDetail} />;
     }
     return (
       <Layout>
@@ -103,7 +114,6 @@ class Palette extends Component {
 }
 
 Palette.propTypes = {
-  colourDetail: React.PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   palette: React.PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
   originalPalette: React.PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
   updateLoadingState: React.PropTypes.func.isRequired
@@ -115,8 +125,8 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-function mapStateToProps({ palette, originalPalette, colourDetail }) {
-  return { palette, originalPalette, colourDetail };
+function mapStateToProps({ palette, originalPalette }) {
+  return { palette, originalPalette };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(css(Palette, styles));
