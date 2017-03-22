@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { Snackbar } from 'react-toolbox/lib/snackbar';
 
-class Toast extends Component {
+export class Toast extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -45,7 +45,14 @@ class Toast extends Component {
  }
 
 Toast.propTypes = {
-  toast: React.PropTypes.object.isRequired // eslint-disable-line react/forbid-prop-types
+  toast: React.PropTypes.object // eslint-disable-line react/forbid-prop-types
+};
+
+Toast.defaultProps = {
+  toast: {
+    active: false,
+    message: ''
+  }
 };
 
 function mapStateToProps({ toast }) {

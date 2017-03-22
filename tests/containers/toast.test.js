@@ -1,31 +1,57 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { expect } from 'chai';
-import Toast from '../../src/containers/toast';
 
-describe('<Toast/>', () => {
-  const wrapper = mount(<Toast />);
+import { Toast } from '../../src/containers/toast';
 
-  it('correctly sets its default state', () => {
-    console.log(wrapper);
-    expect(wrapper.state).to.deep.equal({
+function setup() {
+  const props = {
+    toast: { active: true, message: 'Test Message' }
+  };
+
+  const enzymeWrapper = shallow(<Toast />);
+
+  return {
+    props,
+    enzymeWrapper
+  };
+}
+
+describe('(Container) Toast', () => {
+  it('should correctly sets its default state', () => {
+    const { enzymeWrapper } = setup();
+    expect(enzymeWrapper.state()).to.deep.equal({
       active: false,
       message: ''
     });
   });
 
-  it('`props` contains a `text` property with a value of "Hello, world!"', () => {
-      // 4
-    expect(wrapper.props().text).to.equal('Hello, world!');
+  it('should correctly sets state to the toast prop on update', () => {
+    const { enzymeWrapper, props } = setup();
+    enzymeWrapper.setProps(props);
+    expect(enzymeWrapper.state()).to.deep.equal({
+      active: true,
+      message: 'Test Message'
+    });
   });
 
-  it('has an `h1` tag with the text "Home page"', () => {
-      // 5
-    expect(wrapper.contains(<h1>Home page</h1>)).to.equal(true);
+  it('should become inactive on click', () => {
+    const { enzymeWrapper, props } = setup();
+    enzymeWrapper.setProps(props);
+    enzymeWrapper.instance().handleSnackbarClick();
+    expect(enzymeWrapper.state()).to.deep.equal({
+      active: false,
+      message: 'Test Message'
+    });
   });
 
-  after(() => {
-      // 6
-    global.window.close();
+  it('should become inactive on timeout', () => {
+    const { enzymeWrapper, props } = setup();
+    enzymeWrapper.setProps(props);
+    enzymeWrapper.instance().handleSnackbarTimeout();
+    expect(enzymeWrapper.state()).to.deep.equal({
+      active: false,
+      message: 'Test Message'
+    });
   });
 });

@@ -53,7 +53,7 @@ const settings = {
           },
           'postcss-loader' // has separate config, see postcss.config.js nearby
         ]
-      },
+      }
     ]
   },
   devServer: {
