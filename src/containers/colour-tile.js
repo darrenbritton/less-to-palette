@@ -13,6 +13,20 @@ export class ColourTile extends Component {
   constructor(props) {
     super(props);
     this.updateColourDetail = this.updateColourDetail.bind(this);
+    this.state = {
+      menuItems: [
+        {
+          prop: 'label',
+          icon: 'code',
+          caption: 'Copy Variable'
+        },
+        {
+          prop: 'colour',
+          icon: 'color_lens',
+          caption: 'Copy Value'
+        }
+      ]
+    };
   }
 
   updateColourDetail() {
@@ -20,6 +34,15 @@ export class ColourTile extends Component {
   }
 
   render() {
+    const menuItems = this.state.menuItems.map((item) => {
+      return (
+        <div styleName="menu-item-wrapper">
+          <CopyToClipboard text={this.props[item.prop]}>
+            <MenuItem value={item.prop} icon={item.icon} caption={item.caption} />
+          </CopyToClipboard>
+        </div>
+      );
+    });
     return (
       <Card styleName="card">
         <CardMedia aspectRatio="wide" style={{ background: this.props.colour }} />
@@ -27,16 +50,7 @@ export class ColourTile extends Component {
         <CardActions styleName="card-actions">
           <Button id="details" label="Details" onClick={() => { this.updateColourDetail(); }} />
           <IconMenu icon="more_vert" position="bottomRight" menuRipple>
-            <MenuItem styleName="menu-item-wrapper">
-              <CopyToClipboard text={this.props.label}>
-                <MenuItem value="copy-variable" icon="code" caption="Copy Variable" />
-              </CopyToClipboard>
-            </MenuItem>
-            <div styleName="menu-item-wrapper">
-              <CopyToClipboard text={this.props.colour}>
-                <MenuItem value="copy-value" icon="color_lens" caption="Copy Value" />
-              </CopyToClipboard>
-            </div>
+            { menuItems }
           </IconMenu>
         </CardActions>
       </Card>
