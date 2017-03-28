@@ -6,7 +6,10 @@ general:
   branches:
     only:
       - master
-
+test:  
+  override:
+    - npm run test-ci
+    
 deployment:
   staging:
     branch: master
