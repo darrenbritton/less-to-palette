@@ -4,8 +4,8 @@ machine:
 
 general:
   branches:
-    only:
-      - master
+    ignore:
+      - gh-pages
 test:  
   override:
     - npm run test-ci
