@@ -1,8 +1,10 @@
 .appBar {
   background-color: #fff;
   border-bottom: 1px solid transparent;
+  border-color: #fff;
   border-color: rgba(0,0,0,0.14);
   box-shadow: none !important;
+  color: #000;
   color: rgba(0,0,0,0.54);
   fill: rgba(0,0,0,0.54);
 }
@@ -17,7 +19,7 @@
     fill: rgba(0,0,0,0.54);
 }
 .appBar p {
-  letter-spacing: 0px;
+  letter-spacing: 0;
   font-weight: 400;
   font-size: 22px;
   margin-left: 3vw;
@@ -25,7 +27,7 @@
 }
 .appBar span:first-child {
     font-weight: 900;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     font-family: 'Raleway', sans-serif;
 }
 .appBar .rightIcon {
