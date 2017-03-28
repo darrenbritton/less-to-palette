@@ -34,15 +34,13 @@ export class ColourTile extends Component {
   }
 
   render() {
-    const menuItems = this.state.menuItems.map((item) => {
-      return (
-        <div styleName="menu-item-wrapper">
-          <CopyToClipboard text={this.props[item.prop]}>
-            <MenuItem value={item.prop} icon={item.icon} caption={item.caption} />
-          </CopyToClipboard>
-        </div>
-      );
-    });
+    const menuItems = this.state.menuItems.map(item => (
+      <div styleName="menu-item-wrapper">
+        <CopyToClipboard text={this.props[item.prop]}>
+          <MenuItem value={item.prop} icon={item.icon} caption={item.caption} />
+        </CopyToClipboard>
+      </div>
+      ));
     return (
       <Card styleName="card">
         <CardMedia aspectRatio="wide" style={{ background: this.props.colour }} />
