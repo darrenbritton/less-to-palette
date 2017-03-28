@@ -16,6 +16,8 @@
    display: -webkit-box;
    -webkit-line-clamp: 2;
    -webkit-box-orient: vertical;
+   -moz-box-orient: vertical;
+   -ms-box-orient: vertical;
  }
 
  .card-title p {
@@ -34,6 +36,6 @@
  }
 
 .menu-item-wrapper {
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
 }
