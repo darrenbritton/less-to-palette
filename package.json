@@ -20,9 +20,9 @@
       "\\.(css|less)$": "identity-obj-proxy"
     },
     "collectCoverageFrom": [
-        "src/*.js"
-      ]
-    },
+      "src/*.js"
+    ]
+  },
   "devDependencies": {
     "babel-core": "^6.2.1",
     "babel-eslint": "^7.1.1",
