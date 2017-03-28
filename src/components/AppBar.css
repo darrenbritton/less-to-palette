@@ -3,11 +3,12 @@
   border-bottom: 1px solid transparent;
   border-color: #fff;
   border-color: rgba(0,0,0,0.14);
-  box-shadow: none !important;
   color: #000;
   color: rgba(0,0,0,0.54);
+  fill: #000;
   fill: rgba(0,0,0,0.54);
 }
+
 .appBar svg {
   width: 5.4rem;
   height: 6.4rem;
