@@ -6,13 +6,17 @@ general:
   branches:
     ignore:
       - gh-pages
-test:  
+
+compile:
+  override:
+    - npm run build
+
+test:
   override:
     - npm run test-ci
-    
+
 deployment:
-  staging:
+  production:
     branch: master
     commands:
-      - npm run build
       - ./deploy-ghpages.sh .
