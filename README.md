@@ -4,3 +4,4 @@
 [![Code Climate](https://codeclimate.com/github/ThatCrazyIrishGuy/less-to-palette/badges/gpa.svg)](https://codeclimate.com/github/ThatCrazyIrishGuy/less-to-palette)
 [![Issue Count](https://codeclimate.com/github/ThatCrazyIrishGuy/less-to-palette/badges/issue_count.svg)](https://codeclimate.com/github/ThatCrazyIrishGuy/less-to-palette)
 [![Known Vulnerabilities](https://snyk.io/test/github/thatcrazyirishguy/less-to-palette/badge.svg)](https://snyk.io/test/github/thatcrazyirishguy/less-to-palette)
+
