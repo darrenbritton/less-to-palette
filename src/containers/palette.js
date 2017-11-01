@@ -16,6 +16,12 @@ import ColourDetailView from '../components/colour-detail-view';
 
 import { updateLoadingState } from '../actions/index';
 
+function colourSort(colour) {
+  const primaries = ['red', 'green', 'blue'];
+  const alt = primaries.filter(item => item !== colour);
+  return function(a, b) { return (a[colour] - (a[alt[0]] + a[alt[1]] / 2)) - (b[colour] - (b[alt[0]] + b[alt[1]] / 2)) };
+}
+
 class Palette extends Component {
   constructor(props) {
     super(props);
@@ -57,7 +63,13 @@ class Palette extends Component {
 
   handleChange(value) {
     this.setState({ sortBy: value });
-    const sortedPalette = R.compose(R.reverse, R.sortBy(R.prop(value)))(this.state.palette);
+    let sortedPalette = [];
+    if(value === 'red' || value === 'green' || value === 'blue') {
+      const sort = colourSort(value);
+      sortedPalette = R.compose(R.reverse, R.sort(sort))(this.state.palette);      
+    } else {
+      sortedPalette = R.compose(R.reverse, R.sortBy(R.prop(value)))(this.state.palette);      
+    }
     this.setState({ palette: sortedPalette });
   }
 
