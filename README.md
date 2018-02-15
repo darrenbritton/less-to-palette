@@ -1,4 +1,6 @@
 # less-to-pallette
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/darrenbritton/less-to-palette.svg)](https://greenkeeper.io/)
 [![CircleCI](https://circleci.com/gh/darrenbritton/less-to-palette.svg?style=svg)](https://circleci.com/gh/darrenbritton/less-to-palette)
 [![Coverage Status](https://coveralls.io/repos/github/ThatCrazyIrishGuy/less-to-palette/badge.svg?branch=master)](https://coveralls.io/github/ThatCrazyIrishGuy/less-to-palette?branch=master)
 [![Code Climate](https://codeclimate.com/github/ThatCrazyIrishGuy/less-to-palette/badges/gpa.svg)](https://codeclimate.com/github/ThatCrazyIrishGuy/less-to-palette)
