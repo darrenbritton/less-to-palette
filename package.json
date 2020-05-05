@@ -11,7 +11,9 @@
     "test:watch": "npm run test -- --watch",
     "build": "node_modules/.bin/cross-env NODE_ENV=production node_modules/.bin/webpack -p --config ./webpack.production.config.js",
     "lint": "node_modules/.bin/eslint -c .eslintrc src tests --color",
-    "lint-fix": "node_modules/.bin/eslint -c .eslintrc src tests  --color --fix"
+    "lint-fix": "node_modules/.bin/eslint -c .eslintrc src tests  --color --fix",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "author": "Darren Britton",
   "license": "ISC",
@@ -90,6 +92,8 @@
     "react-toolbox": "^2.0.0-beta.6",
     "redux": "^3.6.0",
     "redux-promise": "^0.5.3",
-    "tinycolor2": "^1.4.1"
-  }
+    "tinycolor2": "^1.4.1",
+    "snyk": "^1.317.0"
+  },
+  "snyk": true
 }
